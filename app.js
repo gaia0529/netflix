@@ -20,8 +20,9 @@ app.engine("html", mustacheExpress());
 app.set("view engine", "html");
 app.set("views", __dirname + "/views");
 
-// 기본 path를 /assets으로 설정(css, javascript 등의 파일 사용을 위해)
-app.use(express.static(__dirname + "/assets"));
+// 기본 path를 /static 설정(css, javascript 등의 파일 사용을 위해)
+app.use("/static", express.static(__dirname + "/static"));
+app.use("/assets", express.static(__dirname + "/assets"));
 
 app.use(routes.home, globalRouter);
 
