@@ -4,6 +4,7 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import mustacheExpress from "mustache-express";
+import ejs from "ejs";
 import routes from "./routes";
 import globalRouter from "./routers/globalRouter";
 
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // view 경로 설정
 app.engine("html", mustacheExpress());
+app.engine("html", ejs.renderFile);
 app.set("view engine", "html");
 app.set("views", __dirname + "/views");
 
